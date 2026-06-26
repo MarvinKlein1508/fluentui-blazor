@@ -3,10 +3,18 @@
 
 <h3>Test</h3>
 
+<FluentStack HorizontalGap="6px">
+    <NavLink href="/Debug/Test2">Test 2</NavLink>
+    <FluentNav>
+        <FluentNavItem Href="/Debug/Test2">Test 2</FluentNavItem>
+    </FluentNav>
+    <a href="/Debug/Test2">Test 2</a>
+    <FluentAnchorButton Href="/Debug/Test2">Test 2</FluentAnchorButton>
+</FluentStack>
 
-<InputText @bind-Value="@test" />
+<FluentTextInput @bind-Value="test" Label="Test" Autofocus />
 
 
 @code {
-    public string test { get; set; } = "test";
+    private string test = string.Empty;
 }

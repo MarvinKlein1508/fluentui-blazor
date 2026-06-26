@@ -1,0 +1,30 @@
+﻿@page "/Debug/Test2"
+@layout FluentUI.Demo.Client.Layout.EmptyLayout
+
+<h3>Test2</h3>
+
+<FluentStack HorizontalGap="6px">
+    <NavLink href="/Debug/Test">Back to Test</NavLink>
+    <FluentNav>
+        <FluentNavItem Href="/Debug/Test">Back to Test</FluentNavItem>
+    </FluentNav>
+    <a href="/Debug/Test">Back to test</a>
+    <FluentAnchorButton Href="/Debug/Test">Back to test</FluentAnchorButton>
+</FluentStack>
+
+@if (showInput)
+{
+    <FluentTextInput @bind-Value="test" Label="Test" Autofocus />
+}
+
+
+@code {
+    private string test = string.Empty;
+    private bool showInput = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(100);
+        showInput = true;
+    }
+}
