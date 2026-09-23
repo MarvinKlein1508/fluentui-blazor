@@ -1,0 +1,33 @@
+﻿@page "/Debug/Test2"
+@inject IDialogService dialogService
+@layout FluentUI.Demo.Client.Layout.EmptyLayout
+
+
+<EditForm EditContext="_editContext">
+    <DataAnnotationsValidator />
+    <FluentTextInput @bind-Value="_model.NewPassword" Label="New password" TextInputType="TextInputType.Password" Autofocus />
+    <FluentTextInput @bind-Value="_model.ConfirmNewPassword" Label="Confirm password" TextInputType="TextInputType.Password" />
+</EditForm>
+
+        
+<FluentButton OnClick="SubmitAsync" Appearance="ButtonAppearance.Primary">Change password</FluentButton>
+    
+
+@code
+{
+    private EditContext _editContext;
+    private PasswordChangeInput _model;
+
+    public Test2()
+    {
+        _model = new PasswordChangeInput();
+        _editContext = new EditContext(_model);
+    }
+
+    private async Task SubmitAsync()
+    {
+        _editContext.Validate();
+    }
+}
+
+

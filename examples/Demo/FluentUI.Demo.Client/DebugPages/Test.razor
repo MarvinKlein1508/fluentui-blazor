@@ -1,12 +1,21 @@
 ﻿@page "/Debug/Test"
+@inject IDialogService dialogService
 @layout FluentUI.Demo.Client.Layout.EmptyLayout
 
-<h3>Test</h3>
 
+<FluentButton OnClick="ShowPasswordChangeDialogAsync">Show Dialog</FluentButton>
 
-<InputText @bind-Value="@test" />
-
+<FluentProviders />
 
 @code {
-    public string test { get; set; } = "test";
+    private async Task ShowPasswordChangeDialogAsync()
+    {
+        DialogOptions parameters = new()
+        {
+            Width = "500px",
+            Modal = true,
+        };
+
+        var result = await dialogService.ShowDialogAsync<PasswordChangeDialog>(parameters);
+    }
 }
